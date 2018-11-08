@@ -1,14 +1,14 @@
 <nav aria-label="Data grid navigation">
   <ul class="pagination justify-content-end">
-    <li class="page-item" [ngClass]="{disabled:page===1}">
-      <button class="page-link" href="#" tabindex="-1" (click)="setPage.emit(page-1)">Previous</button>
+    <li class="page-item" [ngClass]="{disabled:Page===1}">
+      <button class="page-link" href="#" tabindex="-1" (click)="SetPage.emit(Page-1)">Previous</button>
     </li>
-    <li *ngRepeat="resourceCount/limit;index as i" class="page-item" [ngClass]="{active:page===i+1}">
-      <button class="page-link" (click)="setPage.emit(i+1)">{{i+1}} <span *ngIf="page===i+1" class="sr-only">(current)</span></button>
+    <li *ngRepeat="ResourceCount/Limit;index as i" class="page-item" [ngClass]="{active:Page===i+1}">
+      <button class="page-link" (click)="SetPage.emit(i+1)">{{i+1}} <span *ngIf="Page===i+1" class="sr-only">(current)</span></button>
     </li>
 
-    <li class="page-item" [ngClass]="{disabled:page*limit>=resourceCount}">
-      <button class="page-link" (click)="setPage.emit(page+1)">Next</button>
+    <li class="page-item" [ngClass]="{disabled:Page*Limit>=ResourceCount}">
+      <button class="page-link" (click)="SetPage.emit(Page+1)">Next</button>
     </li>
   </ul>
 </nav>
