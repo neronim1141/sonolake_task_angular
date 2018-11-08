@@ -12,6 +12,9 @@ import { CharacterInfoComponent } from './components/character-info/character-in
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { RepeatDirective } from './directives/repeat.directive';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { EditCharacterComponent } from './components/edit-character/edit-character.component';
+import { NewCharacterComponent } from './components/new-character/new-character.component';
+import { CharacterFormComponent } from './components/character-form/character-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
     ListViewComponent,
     CharacterInfoComponent,
     PaginatorComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    EditCharacterComponent,
+    NewCharacterComponent,
+    CharacterFormComponent
   ],
   imports: [
     BrowserModule,

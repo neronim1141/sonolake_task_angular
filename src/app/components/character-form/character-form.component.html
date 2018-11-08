@@ -1,0 +1,12 @@
+<div class="form-group" [formGroup]="characterForm">
+  <label for="name" class="sr-only">Name</label>
+  <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name...">
+  <label for="species" class="sr-only">Species</label>
+  <select class="form-control" id="species" formControlName="species">
+    <option *ngFor="let specie of species">{{specie}}</option>
+  </select>
+  <label for="gender" class="sr-only">Gender</label>
+  <input *ngFor="let gender1 of genders" type="radio" formControlName="gender" value="{{gender1}"> {{gender1}}<br>
+  <label for="homeworld" class="sr-only">Homeworld</label>
+  <input type="text" class="form-control" id="homeworld" formControlName="homeworld" placeholder="Homeworld...">
+</div>

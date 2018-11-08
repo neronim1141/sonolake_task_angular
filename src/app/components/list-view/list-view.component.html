@@ -3,7 +3,7 @@
 <div class="row">
   <sl-search-box class="col-sm-6" (Search)="search($event)"></sl-search-box>
   <div class="col-sm-6 text-sm-right">
-    <a href="#" class="btn btn-primary mb-3">Add New</a>
+    <a [routerLink]="['/new-character']" class="btn btn-primary mb-3">Add New</a>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let character of characters" sl-character-info [Character]="character">
-    <tr>
+      <tr>
   </tbody>
 </table>
 
