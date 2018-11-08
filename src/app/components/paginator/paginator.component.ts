@@ -15,12 +15,12 @@ import {
 })
 export class PaginatorComponent {
   @Input()
-  page = 1;
+  Page = 1;
   @Input()
-  limit = 10;
+  Limit = 10;
   @Input()
-  resourceCount;
+  ResourceCount;
 
   @Output()
-  setPage = new EventEmitter<number>();
+  SetPage = new EventEmitter<number>();
 }

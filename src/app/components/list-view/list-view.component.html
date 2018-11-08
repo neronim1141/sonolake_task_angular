@@ -19,9 +19,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let character of characters" sl-character-info [character]="character">
+    <tr *ngFor="let character of characters" sl-character-info [Character]="character">
     <tr>
   </tbody>
 </table>
 
-<sl-paginator [page]="page" [limit]="limit" [resourceCount]="resourcesCount" (setPage)="setPage($event)"></sl-paginator>
+<sl-paginator [Page]="page" [Limit]="limit" [ResourceCount]="resourcesCount" (SetPage)="setPage($event)"></sl-paginator>

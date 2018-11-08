@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Character } from '../types/character.type';
+import { Observable } from 'rxjs';
 
 interface QueryOptions {
   _page?: number;
@@ -12,18 +13,22 @@ interface QueryOptions {
   providedIn: 'root'
 })
 export class CharactersGetService {
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
   public getCharacters() {
-    return this.http.get('http://localhost:3000/characters');
+    return this._http.get('http://localhost:3000/characters');
   }
-  public getCharactersByPage(options: QueryOptions) {
-    return this.http
+
+  public getCharactersByPage(
+    options: QueryOptions
+  ): Promise<HttpResponse<Character[]>> {
+    return this._http
       .get<Character[]>(
         `http://localhost:3000/characters${this.prepareQueryOptions(options)}`,
         { observe: 'response' }
       )
       .toPromise();
   }
+
   private prepareQueryOptions(options: QueryOptions): string {
     let query = `?`;
     let keys = Object.keys(options);

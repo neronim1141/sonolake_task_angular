@@ -9,7 +9,7 @@ import { Character } from 'src/app/types/character.type';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
-  characters;
+  characters: Character[];
   page: number = 1;
   limit: number = 10;
   q: string = '';

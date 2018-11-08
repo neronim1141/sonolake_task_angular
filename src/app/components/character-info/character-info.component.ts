@@ -16,7 +16,7 @@ import { Character } from 'src/app/types/character.type';
 })
 export class CharacterInfoComponent {
   @Input()
-  character: Character;
+  Character: Character;
   @Output()
   Edit = new EventEmitter<number>();
   @Output()

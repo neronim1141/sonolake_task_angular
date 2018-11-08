@@ -16,10 +16,10 @@ import { debounceTime } from 'rxjs/operators';
 export class SearchBoxComponent implements OnInit, OnDestroy {
   @Output()
   Search = new EventEmitter<string>();
-  searchForm = new FormControl();
+  searchInput = new FormControl();
   sub: Subscription;
   ngOnInit() {
-    this.sub = this.searchForm.valueChanges
+    this.sub = this.searchInput.valueChanges
       .pipe(debounceTime(400))
       .subscribe(val => {
         val = val.trim();
