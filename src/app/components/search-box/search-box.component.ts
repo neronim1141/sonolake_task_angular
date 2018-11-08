@@ -21,7 +21,10 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.searchForm.valueChanges
       .pipe(debounceTime(400))
-      .subscribe(val => this.Search.emit(val));
+      .subscribe(val => {
+        val = val.trim();
+        if (val) this.Search.emit(val);
+      });
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
