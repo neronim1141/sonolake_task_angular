@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginatorComponent } from './paginator.component';
+import { RepeatDirective } from 'src/app/directives/repeat.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
@@ -8,7 +10,7 @@ describe('PaginatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PaginatorComponent]
+      declarations: [PaginatorComponent, RepeatDirective]
     }).compileComponents();
   }));
 

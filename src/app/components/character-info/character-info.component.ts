@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { Character } from 'src/app/types/character.type';
 
 @Component({
   selector: '[sl-character-info]',
@@ -15,7 +16,7 @@ import {
 })
 export class CharacterInfoComponent {
   @Input()
-  character;
+  character: Character;
   @Output()
   Edit = new EventEmitter<number>();
   @Output()
