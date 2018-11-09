@@ -1,12 +1,48 @@
-<div class="form-group" [formGroup]="characterForm">
-  <label for="name" class="sr-only">Name</label>
-  <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name...">
-  <label for="species" class="sr-only">Species</label>
-  <select class="form-control" id="species" formControlName="species">
-    <option *ngFor="let specie of species">{{specie}}</option>
-  </select>
-  <label for="gender" class="sr-only">Gender</label>
-  <input *ngFor="let gender1 of genders" type="radio" formControlName="gender" value="{{gender1}"> {{gender1}}<br>
-  <label for="homeworld" class="sr-only">Homeworld</label>
-  <input type="text" class="form-control" id="homeworld" formControlName="homeworld" placeholder="Homeworld...">
+<div [formGroup]="characterForm">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"><span class="required">*</span>Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" #name formControlName="name" placeholder="Name..." [class.is-invalid]="errorHandler('name')">
+      <div class="invalid-feedback">
+        Required
+      </div>
+    </div>
+
+
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"> <span class="required">*</span>Species</label>
+    <div class="col-sm-10">
+      <select class="form-control" #species formControlName="species" [class.is-invalid]="errorHandler('species')">
+        <option *ngFor="let s of speciesData" [ngValue]="s">{{s}}</option>
+      </select>
+      <div class="invalid-feedback">
+        Required
+      </div>
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <label class="col-form-legend col-sm-2"> <span class="required">*</span>Gender</label>
+      <div class="col-sm-10">
+        <div *ngFor="let g of gendersData;index as i" class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" [checked]="i==0" formControlName="gender" value="{{g.value}}" [class.is-invalid]="errorHandler('gender')">
+            {{g.label}}
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Homeworld</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="homeworld" placeholder="Homeworld..." [class.is-invalid]="errorHandler('homeworld')">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button (click)="saveCharacter(characterForm)" class="btn btn-primary">Save Character</button>
+    </div>
+  </div>
 </div>

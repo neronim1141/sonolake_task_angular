@@ -12,7 +12,7 @@ interface QueryOptions {
 @Injectable({
   providedIn: 'root'
 })
-export class CharactersGetService {
+export class CharactersRepositoryService {
   constructor(private _http: HttpClient) {}
   public getCharacters() {
     return this._http.get('http://localhost:3000/characters');

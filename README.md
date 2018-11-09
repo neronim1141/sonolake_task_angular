@@ -48,22 +48,22 @@ As a user I want to filter results by using the search box above the data grid.
 
 As a user I want to be able to add new characters by using a new form.
 
-- A new Add Character route should be added.
-- Clicking on Add Character button on the List View should navigate to the new route.
+- A new Add Character route should be added. | DONE
+- Clicking on Add Character button on the List View should navigate to the new route. | DONE
 - Form should consist of the following form fields:
-  - Name - text input, required
-  - Species - select input, required, options from [/species](http://localhost:3000/species) api
-  - Gender - radio input, required
+  - Name - text input, required | DONE
+  - Species - select input, required, options from [/species](http://localhost:3000/species) api | DONE
+  - Gender - radio input, required | DONE
     - value: male, label: Male
     - value: female, label: Female
-    - value: n/a, label: n/a
-  - Homeworld - text input, optional
+    - value: n/a, label: n/a | DONE
+  - Homeworld - text input, optional | DONE
 - Required form fields should be marked by a blue \* next to their label.
-- Relevant error messages should be displayed for form controls with validation errors:
-  - required - This field is required.
-- Invalid form fields should be styled using `.is-invalid` [bootstrap css class](https://getbootstrap.com/docs/4.1/components/forms/#server-side). A field should be styled as invalid only if it is invald and form field has been touched or user has tried to submit an invalid form. Similiar logic should be applied to the visibility of error messages - an error message should be displayed only if a form field is styled as invalid.
+- Relevant error messages should be displayed for form controls with validation errors: | DONE
+  - required - This field is required. | DONE
+- Invalid form fields should be styled using `.is-invalid` [bootstrap css class](https://getbootstrap.com/docs/4.1/components/forms/#server-side). A field should be styled as invalid only if it is invald and form field has been touched or user has tried to submit an invalid form. Similiar logic should be applied to the visibility of error messages - an error message should be displayed only if a form field is styled as invalid.| DONE
 - Add Character form submit button should only be disabled when the request creating a new item is in progress.
-- If a user tries to submit the form but the form is invalid, the top-most invalid form field should get focused.
+- If a user tries to submit the form but the form is invalid, the top-most invalid form field should get focused.| DONE
 - Submitting a valid form should send a POST request to ([http://localhost:3000/characters](http://localhost:3000/characters)).
 - Successfully creating a new item should navigate the user to the main list view.
 
