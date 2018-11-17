@@ -1,3 +1,2 @@
-<p>
-  edit-character works!
-</p>
+<h1>Edit Character</h1>
+<sl-character-form *ngIf="character" [Character]="character" [Species]="speciesData" (Save)="save($event)"></sl-character-form>

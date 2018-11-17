@@ -22,6 +22,7 @@ import { Character } from 'src/app/types/character.type';
 })
 export class CharacterFormComponent implements OnInit {
   @ViewChild('name') nameField: ElementRef;
+  disabled: boolean;
   @Input('Species')
   set species(value) {
     if (value) {
@@ -56,13 +57,14 @@ export class CharacterFormComponent implements OnInit {
       id: '',
       name: ['', Validators.required],
       species: ['', Validators.required],
-      gender: ['male', Validators.required],
+      gender: ['', Validators.required],
       homeworld: ['']
     });
   }
-  saveCharacter(form: FormGroup) {
-    const { value, valid } = form;
+  saveCharacter() {
+    const { value, valid } = this.characterForm;
     if (valid) {
+      this.disabled = true;
       this.Save.emit(value);
     } else {
       //mark all controls as Touched to show user errors
@@ -72,7 +74,7 @@ export class CharacterFormComponent implements OnInit {
       this.nameField.nativeElement.focus();
     }
   }
-  errorHandler(formControlName: string) {
+  errorCheck(formControlName: string) {
     let control = this.characterForm.get(formControlName);
     return !control.valid && control.touched;
   }

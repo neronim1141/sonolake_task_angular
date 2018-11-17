@@ -11,7 +11,7 @@ const routes: Routes = [
     component: ListViewComponent
   },
   {
-    path: "edit-character",
+    path: "edit-character/:id",
     component: EditCharacterComponent
   },
   {

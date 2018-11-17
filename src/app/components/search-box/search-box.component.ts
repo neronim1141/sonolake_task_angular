@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'sl-search-box',
   templateUrl: './search-box.component.html',
@@ -19,11 +19,16 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   searchInput = new FormControl();
   sub: Subscription;
   ngOnInit() {
+    // subscribe to change in search field
     this.sub = this.searchInput.valueChanges
-      .pipe(debounceTime(400))
+      .pipe(
+        //pass value if between key stroke is 200 ms
+        debounceTime(200),
+        //don't pass value if is the same as previous
+        distinctUntilChanged()
+      )
       .subscribe(val => {
-        val = val.trim();
-        if (val) this.Search.emit(val);
+        this.Search.emit(val);
       });
   }
   ngOnDestroy() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CharactersRepositoryService } from 'src/app/services/characters-repository.service';
 import { HttpResponse } from '@angular/common/http';
 import { Character } from 'src/app/types/character.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sl-list-view',
@@ -14,7 +15,10 @@ export class ListViewComponent implements OnInit {
   limit: number = 10;
   q: string = '';
   resourcesCount: number;
-  constructor(private _charactersService: CharactersRepositoryService) {}
+  constructor(
+    private _router: Router,
+    private _charactersService: CharactersRepositoryService
+  ) {}
 
   ngOnInit() {
     this.GetCharacters();
@@ -24,13 +28,32 @@ export class ListViewComponent implements OnInit {
     this.GetCharacters();
   }
   search(q: string) {
+    //debounce make on search input
     this.q = q;
     this.GetCharacters();
   }
   private GetCharacters() {
     this._charactersService
-      .getCharactersByPage({ _page: this.page, _limit: this.limit, q: this.q })
+      .getCharacters({ _page: this.page, _limit: this.limit, q: this.q })
+      .toPromise()
       .then(this.handleResponse);
+  }
+  public edit(id: number) {
+    this._router.navigate(['/edit-character', id]);
+  }
+  public remove(id: number, index: number) {
+    this._charactersService
+      .removeCharacter(id)
+      .toPromise()
+      .then(character => {
+        this.characters = this.characters.filter((val, i) => {
+          return i != index;
+        });
+        if (this.characters.length == 0 && this.page > 1) {
+          this.page--;
+          this.GetCharacters();
+        }
+      });
   }
   /**
    * handle response from charactersService
@@ -38,7 +61,6 @@ export class ListViewComponent implements OnInit {
    */
   private handleResponse = (res: HttpResponse<Character[]>): void => {
     this.resourcesCount = parseInt(res.headers.get('x-total-count'));
-    console.log(this.resourcesCount);
     this.characters = res.body;
   };
 }

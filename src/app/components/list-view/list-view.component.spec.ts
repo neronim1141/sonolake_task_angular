@@ -1,12 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListViewComponent } from './list-view.component';
-import { SearchBoxComponent } from '../search-box/search-box.component';
-import { CharacterInfoComponent } from '../character-info/character-info.component';
-import { PaginatorComponent } from '../paginator/paginator.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RepeatDirective } from 'src/app/directives/repeat.directive';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AppModule } from 'src/app/app.module';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('ListViewComponent', () => {
   let component: ListViewComponent;
@@ -14,15 +10,8 @@ describe('ListViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ListViewComponent,
-        SearchBoxComponent,
-        CharacterInfoComponent,
-        PaginatorComponent,
-        RepeatDirective
-      ],
-      imports: [HttpClientModule, ReactiveFormsModule],
-      providers: []
+      imports: [AppModule],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }]
     }).compileComponents();
   }));
 

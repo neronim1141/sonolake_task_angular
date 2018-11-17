@@ -15,25 +15,27 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { EditCharacterComponent } from './components/edit-character/edit-character.component';
 import { NewCharacterComponent } from './components/new-character/new-character.component';
 import { CharacterFormComponent } from './components/character-form/character-form.component';
-
+const declarations = [
+  RepeatDirective,
+  AppComponent,
+  ListViewComponent,
+  CharacterInfoComponent,
+  PaginatorComponent,
+  SearchBoxComponent,
+  EditCharacterComponent,
+  NewCharacterComponent,
+  CharacterFormComponent
+];
+const imports = [
+  BrowserModule,
+  HttpClientModule,
+  AppRoutingModule,
+  ReactiveFormsModule
+];
 @NgModule({
-  declarations: [
-    RepeatDirective,
-    AppComponent,
-    ListViewComponent,
-    CharacterInfoComponent,
-    PaginatorComponent,
-    SearchBoxComponent,
-    EditCharacterComponent,
-    NewCharacterComponent,
-    CharacterFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
+  declarations,
+  imports,
+  exports: [...declarations, ...imports],
   providers: [],
   bootstrap: [AppComponent]
 })

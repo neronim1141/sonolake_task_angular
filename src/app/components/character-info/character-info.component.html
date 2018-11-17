@@ -4,11 +4,11 @@
 <td>{{Character?.gender}}</td>
 <td>{{Character?.homeworld}}</td>
 <td>
-  <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
-    <button type="button" class="btn btn-secondary">
+  <div class="btn-group btn-group-sm" role="group" aria-label="Actions" *ngIf="Character">
+    <button type="button" class="btn btn-secondary" (click)="Edit.emit(Character.id)">
       <i class="fa fa-pencil" aria-hidden="true"></i> Edit
     </button>
-    <button type="button" class="btn btn-danger">
+    <button type="button" class="btn btn-danger" (click)="Remove.emit(Character.id)">
       <i class="fa fa-trash-o" aria-hidden="true"></i> Remove
     </button>
   </div>
