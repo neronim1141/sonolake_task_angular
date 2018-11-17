@@ -35,7 +35,7 @@ const imports = [
 @NgModule({
   declarations,
   imports,
-  exports: [...declarations, ...imports],
+  exports: [...declarations, ...imports], //for test purposes
   providers: [],
   bootstrap: [AppComponent]
 })

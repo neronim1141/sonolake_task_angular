@@ -30,6 +30,7 @@ export class ListViewComponent implements OnInit {
   search(q: string) {
     //debounce make on search input
     this.q = q;
+    this.page = 1;
     this.GetCharacters();
   }
   private GetCharacters() {

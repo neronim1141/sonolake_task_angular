@@ -1,21 +1,21 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { ListViewComponent } from "./components/list-view/list-view.component";
-import { EditCharacterComponent } from "./components/edit-character/edit-character.component";
-import { NewCharacterComponent } from "./components/new-character/new-character.component";
+import { ListViewComponent } from './components/list-view/list-view.component';
+import { EditCharacterComponent } from './components/edit-character/edit-character.component';
+import { NewCharacterComponent } from './components/new-character/new-character.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: ListViewComponent
   },
   {
-    path: "edit-character/:id",
+    path: 'edit-character/:id',
     component: EditCharacterComponent
   },
   {
-    path: "new-character",
+    path: 'new-character',
     component: NewCharacterComponent
   }
 ];

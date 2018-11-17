@@ -10,27 +10,35 @@ import { Character } from 'src/app/types/character.type';
   styleUrls: ['./edit-character.component.scss']
 })
 export class EditCharacterComponent implements OnInit {
-
-  character:Character;
+  character: Character;
   speciesData: string[];
   constructor(
-    private _route:ActivatedRoute,
+    private _route: ActivatedRoute,
     private _router: Router,
     private _speciesRepository: SpeciesRepositoryService,
-    private _characterRepository:CharactersRepositoryService) {}
+    private _characterRepository: CharactersRepositoryService
+  ) {}
   ngOnInit() {
-    this._characterRepository.getCharacter(this._route.snapshot.paramMap.get('id')).toPromise().then((character)=>{
-      this.character=character;
-    })
+    this._characterRepository
+      .getCharacter(this._route.snapshot.paramMap.get('id'))
+      .toPromise()
+      .then(character => {
+        this.character = character;
+      });
 
-
-    this._speciesRepository.getSpecies().toPromise().then(res => {
-      this.speciesData = res;
-    });
+    this._speciesRepository
+      .getSpecies()
+      .toPromise()
+      .then(res => {
+        this.speciesData = res;
+      });
   }
-  public save(character:Character){
-    this._characterRepository.updateCharacter(character).toPromise().then(()=>{
-      this._router.navigate(['/']);
-    });
+  public save(character: Character) {
+    this._characterRepository
+      .updateCharacter(character)
+      .toPromise()
+      .then(() => {
+        this._router.navigate(['/']);
+      });
   }
 }

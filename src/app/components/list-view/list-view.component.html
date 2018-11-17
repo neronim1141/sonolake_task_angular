@@ -19,13 +19,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let character of characters;index as i" sl-character-info [Character]="character" (Edit)="edit($event)" (Remove)="remove($event,i)">
-      <tr>
-    </tbody>
-  </table>
+      <tr *ngFor="let character of characters;index as i" sl-character-info
+        [Character]="character" (Edit)="edit($event)"
+        (Remove)="remove($event,i)">
+        <tr>
+        </tbody>
+      </table>
 
-  <sl-paginator [Page]="page" [Limit]="limit" [ResourceCount]="resourcesCount" (SetPage)="setPage($event)"></sl-paginator>
-</div>
-<ng-template #no_results>
-  <h2>No Results Found</h2>
-</ng-template>
+      <sl-paginator [Page]="page" [Limit]="limit"
+        [ResourceCount]="resourcesCount" (SetPage)="setPage($event)"></sl-paginator>
+    </div>
+    <ng-template #no_results>
+      <h2>No Results Found</h2>
+    </ng-template>
